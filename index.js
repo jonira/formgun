@@ -1,11 +1,15 @@
 
 var cmder = require('commander');
 
+exports.create = function(cmd) {
+  if(!cmd) {
+    throw new Error('invalid');
+  }
 
+  var res = {};
 
-exports.create = function() {
+  return res;
 
-  throw new Error('invalid');
 };
 
 exports.add = function (argument) {
