@@ -12,5 +12,5 @@ gulp.task('test', function () {
 });
 
 gulp.task('default', function() {
-  gulp.watch([config.source, config.testFiles], ['test']);
+  return gulp.watch([config.source, config.testFiles], ['test']);
 });
