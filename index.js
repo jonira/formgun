@@ -1,7 +1,29 @@
 #! /usr/bin/env node
 var cmder = require('commander');
+var fs = require('fs');
 
 var execute = exports.execute = function(args) {
+
+  var res = parse(args);
+
+  var params = res.params;
+  if(params.name) {
+    try {
+    fs.mkdirSync(params.name);
+    }
+    catch(ex) {
+      if(ex.code === 'EEXIST') {
+        throw new Error('Cannot create directory "' + params.name 
+        + '", directory already exists.')
+      }
+      console.log(ex);
+    }
+  }
+
+  return res;
+};
+
+var parse = exports.parse = function(args) {
   if(!args) {
     throw new Error('invalid');
   }
