@@ -1,6 +1,9 @@
+var fs = require('fs');
+var path = require('path');
+
 var assert = require('assert');
 var chai = require('chai');
-var fs = require('fs');
+var rimraf = require('rimraf');
 
 var expect = chai.expect;
 var should = chai.should();
@@ -8,6 +11,7 @@ var should = chai.should();
 var fg = require('./../index.js');
 
 describe('FormGun', function() {
+  /*
   describe('parsing parameters', function() {
     it('should throw if no parameters', function() {
         expect(fg.parse).to.throw('invalid');
@@ -18,30 +22,33 @@ describe('FormGun', function() {
         r.should.have.property("params").and
         .have.property("name", "myForm");
     });
-
   });
+  */
 
   describe('creating forms', function() {
 
-    beforeEach(function() {
-      try {
-        fs.rmdirSync('myForm');
-      }
-      catch(e) {}
+    before(function() {
+        var executed = false;
+        fs.unlink('./myForm/formgun.json');
     });
 
-    it('should create directory named after the name', function() {
-        var r = fg.execute(['node', 'fake-path/index.js', 'create', 'myForm']);
-
-        var dirExists = fs.existsSync(r.params.name);
-
-        assert.equal(dirExists, true, "Directory created");
+    afterEach(function() {
+        //rimraf('myForm', function() {});
     });
 
-    it('should fail if directory already exists', function() {
-        fs.mkdirSync('myForm');
-        expect(fg.execute.bind(this, ['node', 'fake-path/index.js', 'create', 'myForm']))
-        .to.throw('Cannot create directory "myForm", directory already exists.');
+    it('should create directory and files', function() {
+        var r = fg.execute({action: 'create', name: 'myForm'});
+
+        r.finally(function() {
+            var dirExists = fs.existsSync('myForm');
+            var jsonExists = fs.existsSync('myForm/formgun.json');
+            var indexExists = fs.existsSync('myForm/index.html');
+
+            assert.equal(dirExists, true, "Directory created");
+            assert.equal(jsonExists, true, "formgun.json created");
+            assert.equal(indexExists, true, "index.html created");
+        });
     });
+
   });
 });

@@ -1,0 +1,9 @@
+<h1>{{=it.name}}</h1>
+<form>
+{{ for(var prop in it.inputs) { }}
+    <label>{{=it.inputs[prop].name}}</label><input></input>
+{{ } }}
+{{ for(var prop in it.actions) { }}
+<button>{{=it.actions[prop]}}</button>
+{{ } }}
+</form>

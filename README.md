@@ -4,6 +4,8 @@ Fast & easy forms for the web.
 
 ## Installation
 
+Formgun is a node.js module, you can install it with npm:
+
 ````npm install formgun````
 
 ## Usage
