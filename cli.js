@@ -1,7 +1,7 @@
+#!/usr/bin/env node
+var cmder = require('commander');
 
-//var cmder = require('commander');
-
-var gun = requrire('./index.js');
+var gun = require('./index.js');
 
 var parse = exports.parse = function(args) {
   if(!args) {
@@ -34,10 +34,8 @@ var parse = exports.parse = function(args) {
     cmder.parse(args);
 
   var res = {
-    'params': {
       'name': formName,
       'action': action
-    }
   };
 
   return res;

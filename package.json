@@ -1,11 +1,11 @@
 {
   "name": "formgun",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "cli.js",
   "description": "Fast n easy forms for the web.",
   "preferGlobal": true,
   "bin": {
-    "formgun": "index.js"
+    "formgun": "cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
