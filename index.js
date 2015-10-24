@@ -84,7 +84,7 @@ var generateHtml = function(formJson) {
 };
 
 var writeHtml = function(formJson) {
-    return fs.writeFileAsync('./' + formJson.name + '/index.html', formJson.html).done();
+    return fs.writeFileAsync('./' + formJson.name + '/index.html', formJson.html);
 };
 
 exports.add = function (argument) {

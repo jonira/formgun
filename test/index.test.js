@@ -27,16 +27,7 @@ describe('FormGun', function() {
 
   describe('creating forms', function() {
 
-    before(function() {
-        var executed = false;
-        fs.unlink('./myForm/formgun.json');
-    });
-
-    afterEach(function() {
-        //rimraf('myForm', function() {});
-    });
-
-    it('should create directory and files', function() {
+    it('should create directory and files', function(done) {
         var r = fg.execute({action: 'create', name: 'myForm'});
 
         r.finally(function() {
@@ -47,6 +38,7 @@ describe('FormGun', function() {
             assert.equal(dirExists, true, "Directory created");
             assert.equal(jsonExists, true, "formgun.json created");
             assert.equal(indexExists, true, "index.html created");
+            done();
         });
     });
 
