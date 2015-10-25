@@ -1,6 +1,6 @@
 {
   "name": "formgun",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "cli.js",
   "description": "Fast n easy forms for the web.",
   "preferGlobal": true,
