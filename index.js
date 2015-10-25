@@ -1,7 +1,8 @@
 #! /usr/bin/env node
 var fs = require('fs');
+var path = require('path');
 
-var dots = require('dot').process({path: './templates'});
+var dots = require('dot').process({'path': path.join(__dirname, 'templates')});
 
 var Promise = require('bluebird');
 var fs = Promise.promisifyAll(fs);
@@ -21,7 +22,7 @@ var execute = exports.execute = function(command) {
           var newData = {
               name: command.input.name,
               type: command.input.type
-          }
+          };
           return generateJson(fileData, newData);
       });
   }
