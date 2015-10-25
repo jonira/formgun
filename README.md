@@ -10,47 +10,29 @@ Formgun is a node.js module, you can install it with npm:
 
 ## Usage
 
-**Step 1:**
-
  Create a new form
-
-
-````formgun create myform````
-
-
-**Step 2:**
+````fgun create booking````
 
 Add inputs
-````formgun add name into myform --type:string --validator:length<5````
+````fgun update booking --add input  --name email --type:string````
+or by (shorter syntax):
+````fgun update booking -a input -n email -t:string````
 
-**Step 3:**
-
-Profit. HTML containing the form is generated under ````/forms/myForm````
-
+HTML containing the form is generated under ````./booking/````
 
 ## Documentation
 
-Command pattern is: ````formgun {create/add/host}```` see below.
+Command pattern is: ````fgun {create/update}```` see below.
 
 ### create
-Creates a new form. Form is generated under ````./forms/```` directory.
-
-* submit_url
-* submit_text
-* succ_msg
-* err_msg
+Creates a new form. Form is generated under ````./{form-name}/```` directory.
 
 ### add
 Adds an input to a form.
 
-* name
-* type
-* validator
-
-### host
-Hosts a form.
-
+* name, name of input
+* type, type of input (string)
 
 ## Contributing
 
-Feel free to hack away :) PRs, issues are welcome !
+PRs are welcome !
