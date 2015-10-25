@@ -1,9 +1,53 @@
-<h1>{{=it.name}}</h1>
-<form>
-{{ for(var prop in it.inputs) { }}
-    <label>{{=it.inputs[prop].name}}</label><input></input>
-{{ } }}
-{{ for(var prop in it.actions) { }}
-<button>{{=it.actions[prop]}}</button>
-{{ } }}
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{=it.name}}</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<div class="container">
+    <h1 class="page-header">{{=it.name}}</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <form>
+            {{ for(var prop in it.inputs) { }}
+                <div class="form-group">
+                <label for="{{=it.inputs[prop].name}}">{{=it.inputs[prop].name}}</label>
+                <input class="form-control" id="{{=it.inputs[prop].name}}" type="{{=it.inputs[prop].type}}"></input>
+                </div>
+            {{ } }}
+            {{ for(var prop in it.actions) { }}
+            <button class="btn btn-default">{{=it.actions[prop]}}</button>
+            {{ } }}
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+</html>
