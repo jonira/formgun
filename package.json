@@ -5,7 +5,7 @@
   "description": "Fast n easy forms for the web.",
   "preferGlobal": true,
   "bin": {
-    "formgun": "cli.js"
+    "fgun": "cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
