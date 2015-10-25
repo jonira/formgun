@@ -1,44 +1,36 @@
 #!/usr/bin/env node
-var cmder = require('commander');
+ var argv = require('minimist')(process.argv.slice(2));
 
 var gun = require('./index.js');
+var util = require('util');
 
 var parse = exports.parse = function(args) {
   if(!args) {
     throw new Error('invalid');
   }
 
-  var formName, action;
-  cmder
-    .version('0.0.0')
-    .command('create <name>')
-    .description('Create a new form')
-    .option('-url, --submit_url', 'url to post submit')
-    .option('--submit_text', 'submit button text')
-    .option('--succ_msg', 'message to show if submit succeeds')
-    .option('--err_msg', 'message to show if submit fails')
-    .action(function(name) {
-      formName = name;
-      action = 'create';
-    });
+  var formName, action, inputName, inputType;
 
- cmder
-    .command('add <name>')
-    .description('Add a input to a form')
-    .option('-type', 'type of input')
-    .action(function(name) {
-      inputName = name;
-      action = 'add';
-  });
+  action = argv._[0];
+  formName = argv._[1];
 
-    cmder.parse(args);
+  inputName = argv.n ? argv.n : argv.name;
+  inputType = argv.t ? argv.t : argv.type;
 
   var res = {
       'name': formName,
-      'action': action
+      'action': action,
+      'input': {
+          'name': inputName,
+          'type': inputType
+      }
   };
 
+//  console.log(require('util').inspect(cmder, { depth: null }));
+
+  console.log(argv);
+  console.log(res);
   return res;
 };
 
-gun.execute(parse(process.argv));
+gun.execute(parse(argv));

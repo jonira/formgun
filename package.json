@@ -22,8 +22,8 @@
   "homepage": "https://github.com/jonira/formgun",
   "dependencies": {
     "bluebird": "^2.10.2",
-    "commander": "^2.9.0",
-    "dot": "^1.0.3"
+    "dot": "^1.0.3",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {
     "chai": "^3.3.0",

@@ -8,18 +8,21 @@ var fs = Promise.promisifyAll(fs);
 
 var execute = exports.execute = function(command) {
 
-  var params = command;
-  var form = params.name;
+  var form = command.name;
   var createFormData;
 
-  if(params.action === 'create') {
+  if(command.action === 'create') {
       createFormData = createDir(form).then(function () {
           return createJSON(form);
       });
   }
-  if(params.action === "add") { // adding of new data
-      createFormData = readJSON(form).then(function(formData){
-          return generateJson(formData, newData);
+  if(command.action === "update") { // adding of new data
+      createFormData = readJSON(form).then(function(fileData){
+          var newData = {
+              name: command.input.name,
+              type: command.input.type
+          }
+          return generateJson(fileData, newData);
       });
   }
 
@@ -28,7 +31,9 @@ var execute = exports.execute = function(command) {
       return;
   }
 
-  return createFormData.then(function (form) {
+  return createFormData.then(function(json) {
+      return storeJson(json);
+  }).then(function (form) {
       return generateHtml(form);
   }).then(function(form) {
       return writeHtml(form);
@@ -45,36 +50,40 @@ var createDir = function(form) {
 };
 
 var createJSON = function(form) {
-    var json = {
+    return {
         name: form,
         inputs: {
 
         },
         actions: ['submit']
     };
+};
 
-    var wpromise = fs.writeFileAsync('./' + form + '/formgun.json', JSON.stringify(json, null, 4));
+var readJSON = function(form) {
+    var rpromise = fs.readFileAsync('./' + form + '/formgun.json', {encoding: 'UTF-8'});
+    return rpromise.then(function (content) {
+        return JSON.parse(content);
+    });
+};
+
+var generateJson = function(formData, newData) {
+
+    var input = {
+        'name': newData.name,
+        'type': newData.type
+    };
+
+    formData.inputs[newData.name]= input;
+
+    return formData;
+};
+
+var storeJson = function(json) {
+    var wpromise = fs.writeFileAsync('./' + json.name + '/formgun.json', JSON.stringify(json, null, 4));
 
     return wpromise.then(function () {
         return json;
     });
-};
-
-var readJSON = function(form) {
-    var rpromise = fs.readFileAsync('./' + form + '/formmgun.json', {encoding: 'UTF-8'});
-    rpromise.then(function (content) {
-        return JSON.parse(content);
-    });
-
-    return rpromise;
-};
-
-var generateJson = function(formData, newData) {
-    formData.inputs[newData.name] = {
-        name: newData.name,
-        type: newData.type
-    };
-    return formData;
 };
 
 var generateHtml = function(formJson) {
