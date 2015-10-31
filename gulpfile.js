@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var mocha = require('gulp-mocha');
 
 var config = {
-  source: './index.js',
+  source: './src/*.js',
   testFiles: './test/*.test.js'
 };
 gulp.task('test', function () {

@@ -8,7 +8,7 @@ var rimraf = require('rimraf');
 var expect = chai.expect;
 var should = chai.should();
 
-var fg = require('./../index.js');
+var fg = require('./../src/generator.js');
 
 describe('FormGun', function() {
   /*

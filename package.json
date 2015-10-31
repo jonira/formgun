@@ -1,11 +1,11 @@
 {
   "name": "formgun",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "cli.js",
   "description": "Fast n easy forms for the web.",
   "preferGlobal": true,
   "bin": {
-    "fgun": "cli.js"
+    "fgun": "index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,7 +22,10 @@
   "homepage": "https://github.com/jonira/formgun",
   "dependencies": {
     "bluebird": "^2.10.2",
+    "body-parser": "^1.14.1",
     "dot": "^1.0.3",
+    "express": "^4.13.3",
+    "json2csv": "^3.0.1",
     "minimist": "^1.2.0"
   },
   "devDependencies": {
