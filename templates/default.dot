@@ -32,15 +32,15 @@
     <h1 class="page-header">{{=it.name}}</h1>
     <div class="row">
         <div class="col-md-4">
-            <form>
+            <form action="/" method="post">
             {{ for(var prop in it.inputs) { }}
                 <div class="form-group">
                 <label for="{{=it.inputs[prop].name}}">{{=it.inputs[prop].name}}</label>
-                <input class="form-control" id="{{=it.inputs[prop].name}}" type="{{=it.inputs[prop].type}}"></input>
+                <input class="form-control" id="{{=it.inputs[prop].name}}" name="{{=it.inputs[prop].name}}" type="{{=it.inputs[prop].type}}"></input>
                 </div>
             {{ } }}
             {{ for(var prop in it.actions) { }}
-            <button class="btn btn-default">{{=it.actions[prop]}}</button>
+            <input type="submit" value="{{=it.actions[prop]}}" class="btn btn-default" />
             {{ } }}
             </form>
         </div>
