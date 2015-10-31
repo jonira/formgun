@@ -8,7 +8,7 @@ var rimraf = require('rimraf');
 var expect = chai.expect;
 var should = chai.should();
 
-var fg = require('./../index.js');
+var fg = require('./../src/generator.js');
 
 describe('FormGun', function() {
   /*
@@ -28,7 +28,7 @@ describe('FormGun', function() {
   describe('creating forms', function() {
 
     it('should create directory and files', function(done) {
-        var r = fg.execute({action: 'create', name: 'myForm'});
+        var r = fg({action: 'create', name: 'myForm'});
 
         r.finally(function() {
             var dirExists = fs.existsSync('myForm');
