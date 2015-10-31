@@ -22,10 +22,11 @@
   "homepage": "https://github.com/jonira/formgun",
   "dependencies": {
     "bluebird": "^2.10.2",
+    "body-parser": "^1.14.1",
     "dot": "^1.0.3",
     "express": "^4.13.3",
-    "minimist": "^1.2.0",
-    "password-generator": "^2.0.2"
+    "json2csv": "^3.0.1",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {
     "chai": "^3.3.0",

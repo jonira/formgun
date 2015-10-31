@@ -28,7 +28,7 @@ describe('FormGun', function() {
   describe('creating forms', function() {
 
     it('should create directory and files', function(done) {
-        var r = fg({action: 'create', name: 'myForm'});
+        var r = fg.execute({action: 'create', name: 'myForm'});
 
         r.finally(function() {
             var dirExists = fs.existsSync('myForm');

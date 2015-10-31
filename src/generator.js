@@ -7,7 +7,8 @@ var dots = require('dot').process({'path': path.join(__dirname, '../', 'template
 var Promise = require('bluebird');
 var fs = Promise.promisifyAll(fs);
 
-module.exports = function(command) {
+module.exports = {};
+module.exports.execute = function(command) {
 
     var base_path = process.cwd();
 
@@ -64,7 +65,7 @@ var createJSON = function(form) {
     };
 };
 
-var readJSON = function(form) {
+var readJSON = module.exports.readJSON = function(form) {
     var rpromise = fs.readFileAsync(path.join(form, 'formgun.json'), {encoding: 'UTF-8'});
     return rpromise.then(function (content) {
         return JSON.parse(content);

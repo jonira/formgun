@@ -7,10 +7,10 @@ var util = require('util');
      var handlerName = getHandlerName(argv);
 
      if(handlerName === 'generator') {
-         gun(parseGenerator(argv));
+         gun.execute(parseGenerator(argv));
      }
      else if(handlerName === 'host') {
-         host(parseHost(argv));
+         host.execute(parseHost(argv));
      }
      else {
          console.warn('Exiting. Unknown handler: ' + handlerName);
@@ -19,7 +19,6 @@ var util = require('util');
 
 var getHandlerName = exports.getConfigName = function(argv) {
     var cmd = argv._[0];
-    console.log('cmd ' + cmd);
 
     switch (cmd) {
         case 'update':
