@@ -26,7 +26,8 @@
     "dot": "^1.0.3",
     "express": "^4.13.3",
     "json2csv": "^3.0.1",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "mongodb": "~2.0.47"
   },
   "devDependencies": {
     "chai": "^3.3.0",

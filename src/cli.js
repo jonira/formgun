@@ -34,7 +34,8 @@ var getHandlerName = exports.getConfigName = function(argv) {
 var parseHost = function(argv) {
 
     return {
-        formName: argv._[1]
+        formName: argv._[1],
+        store: 'mongo'
     };
 
 };
